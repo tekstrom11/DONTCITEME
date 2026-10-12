@@ -21,7 +21,8 @@
     "start": "node ./bin/www",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev": "node --watch ./bin/www"
   },
   "name": "dontciteme!",
   "version": "1.0.0",
