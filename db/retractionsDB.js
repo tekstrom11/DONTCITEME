@@ -1,4 +1,5 @@
 import { db } from "./connection.js";
+import { ObjectId } from "mongodb";
 
 const retractions = db.collection("retractions");
 
@@ -13,5 +14,13 @@ export async function getRetractionsById(id) {
 
 export async function createRetraction(data) {
   const result = await retractions.insertOne(data);
+  return result;
+}
+
+export async function updateRetraction(id, data) {
+  const result = await retractions.updateOne(
+    { _id: new ObjectId(id) },
+    { $set: data }
+  );
   return result;
 }
