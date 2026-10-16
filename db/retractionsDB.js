@@ -10,3 +10,8 @@ export async function searchRetractions(category) {
 export async function getRetractionsById(id) {
     return retractions.findOne({_id: id});
 }
+
+export async function createRetraction(data) {
+  const result = await retractions.insertOne(data);
+  return result;
+}

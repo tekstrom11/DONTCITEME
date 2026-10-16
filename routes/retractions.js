@@ -1,6 +1,6 @@
 import express from "express";
-import { searchRetractions } from "../db/retractionsDB.js";
-import { db } from "../db/connection.js";
+import requireAdmin from "../middleware/requireAdmin.js";
+import { searchRetractions, createRetraction } from "../db/retractionsDB.js";
 
 const router = express.Router();
 
@@ -10,10 +10,9 @@ router.get("/", async (req, res) => {
   res.json(results);
 });
 
-router.get("/subjects", async (req, res) => {
-  const subjects = await db.collection("retractions").distinct("primary_subject");
-  console.log(subjects);
-  res.json(subjects);
+router.post("/", requireAdmin, async (req, res) => {
+  const result = await createRetraction(req.body);
+  res.json(result);
 });
 
 export default router;
