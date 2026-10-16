@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Don't Cite Me! - Database Search</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/search.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <h1 class="site-title">DON'T CITE ME!</h1>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/search.html" class="active">Search</a>
+      <a href="/submit.html">Submit</a>
+      <a href="/request-change.html">Request Change</a>
+    </nav>
+    <a href="/admin.html" class="admin-link">Admin</a>
+  </header>
+
+  <main class="search-page">
+    <h2>Database Search</h2>
+
+    <form id="search-form" class="search-form">
+      <label for="category-select">Subject category</label>
+      <select id="category-select" name="category">
+        <option value="">All categories</option>
+        <option value="B/T">Business / Technology</option>
+        <option value="BLS">Biological / Life Sciences</option>
+        <option value="ENV">Environmental Sciences</option>
+        <option value="HSC">Health Sciences</option>
+        <option value="HUM">Humanities</option>
+        <option value="PHY">Physical Sciences</option>
+        <option value="SOC">Social Sciences</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+
+    <section class="results">
+      <h3>Results</h3>
+      <ul id="results-list" class="results-list">
+        <!-- Filled in by JS -->
+      </ul>
+      <p id="results-status" class="results-status"></p>
+    </section>
+  </main>
+</body>
+
+<script type="module" src="/javascripts/search.js"></script>
+
+</html>
