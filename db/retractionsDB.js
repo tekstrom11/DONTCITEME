@@ -2,7 +2,8 @@ import { db } from "./connection.js";
 
 const retractions = db.collection("retractions");
 
-export async function searchRetractions(query) {
+export async function searchRetractions(category) {
+  const query = category ? { primary_subject: { $regex: `^\\(${category}\\)` } } : {};
   return retractions.find(query).limit(25).toArray();
 }
 
