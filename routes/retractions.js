@@ -1,6 +1,6 @@
 import express from "express";
 import requireAdmin from "../middleware/requireAdmin.js";
-import { searchRetractions, createRetraction, updateRetraction } from "../db/retractionsDB.js";
+import { searchRetractions, createRetraction, updateRetraction, deleteRetraction } from "../db/retractionsDB.js";
 
 const router = express.Router();
 
@@ -18,6 +18,12 @@ router.post("/", requireAdmin, async (req, res) => {
 router.put("/:id", requireAdmin, async (req, res) => {
   const id = req.params.id;
   const result = await updateRetraction(id, req.body);
+  res.json(result);
+});
+
+router.delete("/:id", requireAdmin, async (req, res) => {
+  const id = req.params.id;
+  const result = await deleteRetraction(id);
   res.json(result);
 });
 

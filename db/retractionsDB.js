@@ -24,3 +24,9 @@ export async function updateRetraction(id, data) {
   );
   return result;
 }
+
+export async function deleteRetraction(id) {
+  const result = await retractions.deleteOne({ _id: new ObjectId(id)});
+  return result;
+}
+
