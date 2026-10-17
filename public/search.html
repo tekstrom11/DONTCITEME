@@ -4,47 +4,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Don't Cite Me! - Database Search</title>
+  <title>Don't Cite Me! - Browse Retractions</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <link rel="stylesheet" href="/stylesheets/search.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
 </head>
 
 <body>
   <header class="site-header">
-    <h1 class="site-title">DON'T CITE ME!</h1>
+    <a href="/" class="site-title">Don't Cite Me!</a>
     <nav class="site-nav">
       <a href="/">Home</a>
-      <a href="/search.html" class="active">Search</a>
-      <a href="/submit.html">Submit</a>
-      <a href="/request-change.html">Request Change</a>
+      <a href="/search.html" class="active">Browse Retractions</a>
+      <a href="/article.html" id="add-retraction-link">Add Retraction</a>
     </nav>
-    <a href="/admin.html" class="admin-link">Admin</a>
+    <div class="header-actions">
+      <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+    </div>
   </header>
 
-  <main class="search-page">
-    <h2>Database Search</h2>
+  <main class="page">
+    <div class="page-heading">
+      <h2>Browse Retractions</h2>
+      <p class="page-subtitle">Search the retraction database by subject area.</p>
+    </div>
 
-    <form id="search-form" class="search-form">
-      <label for="category-select">Subject category</label>
-      <select id="category-select" name="category">
-        <option value="">All categories</option>
-        <option value="B/T">Business / Technology</option>
-        <option value="BLS">Biological / Life Sciences</option>
-        <option value="ENV">Environmental Sciences</option>
-        <option value="HSC">Health Sciences</option>
-        <option value="HUM">Humanities</option>
-        <option value="PHY">Physical Sciences</option>
-        <option value="SOC">Social Sciences</option>
-      </select>
-      <button type="submit">Search</button>
+    <form id="search-form" class="toolbar">
+      <div class="field">
+        <label for="category-select">Subject category</label>
+        <select id="category-select" name="category">
+          <option value="">All categories</option>
+          <option value="B/T">Business / Technology</option>
+          <option value="BLS">Biological / Life Sciences</option>
+          <option value="ENV">Environmental Sciences</option>
+          <option value="HSC">Health Sciences</option>
+          <option value="HUM">Humanities</option>
+          <option value="PHY">Physical Sciences</option>
+          <option value="SOC">Social Sciences</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
     </form>
 
-    <section class="results">
-      <h3>Results</h3>
-      <ul id="results-list" class="results-list">
-        <!-- Filled in by JS -->
-      </ul>
+    <section class="results-section">
+      <ul id="results-list" class="results-list"></ul>
       <p id="results-status" class="results-status"></p>
+
+      <div class="pagination">
+        <button id="prev-page" class="btn btn-ghost" type="button">← Previous</button>
+        <span id="page-indicator" class="page-indicator">Page 1</span>
+        <button id="next-page" class="btn btn-ghost" type="button">Next →</button>
+      </div>
     </section>
   </main>
 </body>
