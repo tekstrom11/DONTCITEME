@@ -1,5 +1,6 @@
 import express from "express";
 import { db } from "../db/connection.js";
+import { ObjectId } from "mongodb";
 
 const router = express.Router();
 const checks = db.collection("checks");
@@ -59,6 +60,37 @@ router.post("/", async (req, res) => {
   const result = await checks.insertOne(newCheck);
 
   res.status(201).json({ _id: result.insertedId, ...newCheck });
+});
+
+router.delete("/:id", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+
+  // find and delete the check, return error if nothing was deleted
+  const result = await checks.deleteOne({ _id: checkObjectId, browserId });
+
+  if (result.deletedCount === 0) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+
+  // Return success status
+  res.status(204).end();
 });
 
 export default router;
