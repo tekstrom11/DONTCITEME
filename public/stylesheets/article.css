@@ -1,0 +1,68 @@
+.article-page {
+  position: relative;
+}
+
+.doodle {
+  position: absolute;
+  opacity: 0.8;
+}
+
+.doodle-magnifier {
+  top: 12px;
+  right: 40px;
+}
+
+.doodle-book {
+  top: 90px;
+  right: 110px;
+}
+
+.card-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 640px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-wide {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.card-form .btn {
+  margin-top: 20px;
+}
+
+.article-status {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+}
