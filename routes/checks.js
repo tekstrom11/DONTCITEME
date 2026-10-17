@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 
   // Name the user assigned
-  const rawCheckName = req.body?.name;
+  const rawCheckName = req.body?.checkName;
 
   // Make sure they actually assigned a name
   if (typeof rawCheckName !== "string" || rawCheckName.trim() === "") {
