@@ -1,8 +1,150 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+
+:root {
+  --accent: #e8734a;
+  --blue: #3f6fb5;
+  --green: #5a9a6f;
+  --pink: #d65f8f;
+  --yellow: #e0b23c;
+  --dark: #2c3e50;
+  --border: #e5e2da;
+  --text: #2a2a2a;
+  --text-muted: #6b6b6b;
+  --bg-card: #ffffff;
+  --bg-cream: #faf7f0;
+  --radius: 14px;
 }
 
-a {
-  color: #00B7FF;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg-cream);
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 18px 32px;
+  background: white;
+  border-bottom: 3px solid var(--dark);
+}
+
+.site-title {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 3px solid transparent;
+}
+
+.site-nav a.active,
+.site-nav a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.page-heading h2 {
+  margin: 0 0 4px;
+  font-size: 2rem;
+}
+
+.page-subtitle {
+  color: var(--text-muted);
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+
+.badge-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--dark);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-right: 8px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #d4602f;
+}
+
+.btn-dark {
+  background: var(--dark);
+  color: white;
+}
+
+.btn-ghost {
+  background: white;
+  border-color: var(--dark);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  background: #f1efe8;
+}
+
+.btn-danger {
+  background: white;
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.btn-danger:hover {
+  background: #fdf0f4;
 }

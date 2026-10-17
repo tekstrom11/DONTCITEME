@@ -9,4 +9,4 @@ try {
   process.exit(1);
 }
 
-export const db = client.db("dontciteme");
+export const db = client.db("retractions");

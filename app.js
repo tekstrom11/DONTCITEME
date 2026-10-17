@@ -3,6 +3,7 @@ import express from "express";
 import path from "path";
 import logger from "morgan";
 import checksRouter from "./routes/checks.js";
+import retractionsRouter from "./routes/retractions.js";
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use("/api/checks", checksRouter);
+app.use("/api/retractions", retractionsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -25,3 +27,5 @@ app.use(function (err, req, res, next) {
 });
 
 export default app;
+
+
