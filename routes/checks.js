@@ -93,4 +93,32 @@ router.delete("/:id", async (req, res) => {
   res.status(204).end();
 });
 
+router.get("/:id", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+
+  // find and return JSON of a specific check, return error if nothing was found
+  const check = await checks.findOne({ _id: checkObjectId, browserId });
+  if (!check) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+  res.json(check);
+});
+
 export default router;
