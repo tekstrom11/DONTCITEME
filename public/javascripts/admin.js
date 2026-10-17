@@ -25,6 +25,8 @@ export function logoutAdmin() {
   window.location.href = "/";
 }
 
+// Wires up the shared Admin/Logout button on any page that has one.
+// Also shows/hides the "Add Retraction" nav link based on login state.
 export function initAdminButton() {
   const btn = document.getElementById("admin-btn");
   const addLink = document.getElementById("add-retraction-link");
@@ -32,7 +34,7 @@ export function initAdminButton() {
   if (addLink) {
     addLink.style.display = getAdminPassword() ? "inline" : "none";
   }
-  
+
   if (!btn) return;
 
   updateAdminButtonLabel(btn);

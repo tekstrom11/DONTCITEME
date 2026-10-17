@@ -3,6 +3,9 @@ import { ObjectId } from "mongodb";
 
 const retractions = db.collection("retractions");
 
+//Searches by subject category using the prefix
+//(e.g. "^\(HSC\)" matches "(HSC) Medicine - Cardiology").
+// Supports pagination via skip/limit.
 export async function searchRetractions(category, page = 1) {
   const query = category ? { primary_subject: { $regex: `^\\(${category}\\)` } } : {};
   const pageSize = 25;
@@ -19,6 +22,11 @@ export async function getRetractionsById(id) {
     return retractions.findOne({ _id: new ObjectId(id)});
 }
 
+/**
+ * record_id has a unique index from the original CSV import, but
+ * admin-added records don't have one. we generate a fresh unique
+ * string here so inserts don't collide with existing null values.
+ **/
 export async function createRetraction(data) {
    const newRecord = {
     ...data,
