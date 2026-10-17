@@ -1,6 +1,12 @@
 import express from "express";
 import requireAdmin from "../middleware/requireAdmin.js";
-import { searchRetractions, createRetraction, updateRetraction, deleteRetraction, getRetractionsById } from "../db/retractionsDB.js";
+import {
+  searchRetractions,
+  createRetraction,
+  updateRetraction,
+  deleteRetraction,
+  getRetractionsById,
+} from "../db/retractionsDB.js";
 
 const router = express.Router();
 
@@ -29,14 +35,13 @@ router.delete("/:id", requireAdmin, async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-    const result = await getRetractionsById(req.params.id);
-    res.json(result);
-  });
+  const result = await getRetractionsById(req.params.id);
+  res.json(result);
+});
 
 //Used by the login flow to verify a password without performing any real write
 router.post("/verify-admin", requireAdmin, (req, res) => {
   res.json({ ok: true });
 });
-
 
 export default router;

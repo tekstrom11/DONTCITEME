@@ -7,7 +7,9 @@ const retractions = db.collection("retractions");
 //(e.g. "^\(HSC\)" matches "(HSC) Medicine - Cardiology").
 // Supports pagination via skip/limit.
 export async function searchRetractions(category, page = 1) {
-  const query = category ? { primary_subject: { $regex: `^\\(${category}\\)` } } : {};
+  const query = category
+    ? { primary_subject: { $regex: `^\\(${category}\\)` } }
+    : {};
   const pageSize = 25;
   const skip = (page - 1) * pageSize;
   return retractions
@@ -19,7 +21,7 @@ export async function searchRetractions(category, page = 1) {
 }
 
 export async function getRetractionsById(id) {
-    return retractions.findOne({ _id: new ObjectId(id)});
+  return retractions.findOne({ _id: new ObjectId(id) });
 }
 
 /**
@@ -28,7 +30,7 @@ export async function getRetractionsById(id) {
  * string here so inserts don't collide with existing null values.
  **/
 export async function createRetraction(data) {
-   const newRecord = {
+  const newRecord = {
     ...data,
     record_id: new ObjectId().toString(),
   };
@@ -45,7 +47,6 @@ export async function updateRetraction(id, data) {
 }
 
 export async function deleteRetraction(id) {
-  const result = await retractions.deleteOne({ _id: new ObjectId(id)});
+  const result = await retractions.deleteOne({ _id: new ObjectId(id) });
   return result;
 }
-
