@@ -41,7 +41,7 @@ export async function createRetraction(data) {
 export async function updateRetraction(id, data) {
   const result = await retractions.updateOne(
     { _id: new ObjectId(id) },
-    { $set: data }
+    { $set: data },
   );
   return result;
 }

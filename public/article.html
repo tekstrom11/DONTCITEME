@@ -1,94 +1,121 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Don't Cite Me! - Add / Edit Retraction</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/article.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Don't Cite Me! - Add / Edit Retraction</title>
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <link rel="stylesheet" href="/stylesheets/article.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
-</head>
+  <body>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/article.html" id="add-retraction-link" class="active"
+          >Add Retraction</a
+        >
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
 
-<body>
-  <header class="site-header">
-    <a href="/" class="site-title">Don't Cite Me!</a>
-    <nav class="site-nav">
-      <a href="/">Home</a>
-      <a href="/search.html">Browse Retractions</a>
-      <a href="/article.html" id="add-retraction-link" class="active">Add Retraction</a>
-    </nav>
-    <div class="header-actions">
-      <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
-    </div>
-  </header>
-
-  <main class="page article-page">
-    <div class="page-heading">
-      <h2 id="article-heading">Add Retraction</h2>
-      <p class="page-subtitle">Record details of a newly issued retraction.</p>
-    </div>
-
-    <form id="article-form" class="card-form">
-      <div class="form-grid">
-        <div class="field">
-          <label for="doi">DOI</label>
-          <input
-            type="text"
-            id="doi"
-            name="original_paper_doi"
-            placeholder="10.1234/example.2024.001"
-            pattern="^10\.\d{4,9}/.+$"
-            title="DOI must look like 10.xxxx/..."
-            required
-          />
-        </div>
-
-        <div class="field">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" placeholder="Paper title" required />
-        </div>
-
-        <div class="field">
-          <label for="journal">Journal</label>
-          <input type="text" id="journal" name="journal" placeholder="e.g. Scientific Reports" />
-        </div>
-
-        <div class="field">
-          <label for="subject-select">Subject</label>
-          <select id="subject-select" name="primary_subject_select">
-            <option value="">Select a category</option>
-            <option value="(B/T) Business/Technology">Business / Technology</option>
-            <option value="(BLS) Biology">Biological / Life Sciences</option>
-            <option value="(ENV) Environmental Sciences">Environmental Sciences</option>
-            <option value="(HSC) Medicine">Health Sciences</option>
-            <option value="(HUM) Humanities">Humanities</option>
-            <option value="(PHY) Physics">Physical Sciences</option>
-            <option value="(SOC) Sociology">Social Sciences</option>
-          </select>
-          <input
-            type="text"
-            id="subject-text"
-            name="primary_subject"
-            placeholder="Subject"
-            style="display: none"
-          />
-        </div>
-
-        <div class="field field-wide">
-          <label for="reason">Retraction Reason</label>
-          <textarea id="reason" name="reason" rows="3" placeholder="Why was this paper retracted?"></textarea>
-        </div>
+    <main class="page article-page">
+      <div class="page-heading">
+        <h2 id="article-heading">Add Retraction</h2>
+        <p class="page-subtitle">
+          Record details of a newly issued retraction.
+        </p>
       </div>
 
-      <button type="submit" id="submit-btn" class="btn btn-primary">Save Retraction</button>
-    </form>
+      <form id="article-form" class="card-form">
+        <div class="form-grid">
+          <div class="field">
+            <label for="doi">DOI</label>
+            <input
+              type="text"
+              id="doi"
+              name="original_paper_doi"
+              placeholder="10.1234/example.2024.001"
+              pattern="^10\.\d{4,9}/.+$"
+              title="DOI must look like 10.xxxx/..."
+              required
+            />
+          </div>
 
-    <p id="article-status" class="article-status"></p>
-  </main>
-</body>
+          <div class="field">
+            <label for="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Paper title"
+              required
+            />
+          </div>
 
-<script type="module" src="/javascripts/article.js"></script>
+          <div class="field">
+            <label for="journal">Journal</label>
+            <input
+              type="text"
+              id="journal"
+              name="journal"
+              placeholder="e.g. Scientific Reports"
+            />
+          </div>
 
+          <div class="field">
+            <label for="subject-select">Subject</label>
+            <select id="subject-select" name="primary_subject_select">
+              <option value="">Select a category</option>
+              <option value="(B/T) Business/Technology">
+                Business / Technology
+              </option>
+              <option value="(BLS) Biology">Biological / Life Sciences</option>
+              <option value="(ENV) Environmental Sciences">
+                Environmental Sciences
+              </option>
+              <option value="(HSC) Medicine">Health Sciences</option>
+              <option value="(HUM) Humanities">Humanities</option>
+              <option value="(PHY) Physics">Physical Sciences</option>
+              <option value="(SOC) Sociology">Social Sciences</option>
+            </select>
+            <input
+              type="text"
+              id="subject-text"
+              name="primary_subject"
+              placeholder="Subject"
+              style="display: none"
+            />
+          </div>
+
+          <div class="field field-wide">
+            <label for="reason">Retraction Reason</label>
+            <textarea
+              id="reason"
+              name="reason"
+              rows="3"
+              placeholder="Why was this paper retracted?"
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary">
+          Save Retraction
+        </button>
+      </form>
+
+      <p id="article-status" class="article-status"></p>
+    </main>
+  </body>
+
+  <script type="module" src="/javascripts/article.js"></script>
 </html>

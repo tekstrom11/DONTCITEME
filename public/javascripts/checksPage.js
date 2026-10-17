@@ -1,4 +1,4 @@
-import { getChecks, createCheck } from "./checksApi.js";
+import { getChecks, createCheck, deleteCheck } from "./checksApi.js";
 
 // Get page elements from checks.html
 const form = document.querySelector("#new-check-form");
@@ -25,6 +25,24 @@ function renderChecks(checks) {
     li.textContent = `${check.checkName} (${check.dois.length} dois)`;
     li.dataset.id = check._id;
 
+    // build and append a delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", async () => {
+      const deleteConfirm = confirm("Do you want to delete this check?");
+
+      if (!deleteConfirm) {
+        return;
+      }
+      try {
+        await deleteCheck(check._id);
+        await loadChecks();
+      } catch (err) {
+        message.textContent = `Couldn't delete citation check: ${err.message}`;
+      }
+    });
+    li.append(deleteButton);
     checkContainer.append(li);
   }
 }

@@ -26,7 +26,9 @@ body {
   background: var(--bg-cream);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 800;
   letter-spacing: -0.5px;
 }

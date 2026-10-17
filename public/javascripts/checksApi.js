@@ -40,3 +40,18 @@ export async function createCheck(checkName) {
 
   return data;
 }
+
+// Delete a check
+export async function deleteCheck(id) {
+  const res = await fetch("/api/checks/" + id, {
+    method: "DELETE",
+    headers: {
+      "X-Browser-Id": getBrowserId(),
+    },
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.error);
+  }
+}
