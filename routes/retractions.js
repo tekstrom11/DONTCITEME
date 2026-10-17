@@ -33,6 +33,7 @@ router.get("/:id", async (req, res) => {
     res.json(result);
   });
 
+//Used by the login flow to verify a password without performing any real write
 router.post("/verify-admin", requireAdmin, (req, res) => {
   res.json({ ok: true });
 });

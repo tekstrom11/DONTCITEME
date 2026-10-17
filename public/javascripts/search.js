@@ -13,6 +13,7 @@ function renderResults(results) {
     .map((r) => {
       const isAdmin = getAdminPassword();
 
+      // Regular users can report a record as wrong and admins edit/delete
       const reportButton = isAdmin
         ? ""
         : `<a href="/flag.html?id=${r._id}" class="btn btn-ghost">Report an Error</a>`;
