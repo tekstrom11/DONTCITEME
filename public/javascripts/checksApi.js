@@ -71,13 +71,14 @@ export async function deleteCheck(id) {
 }
 
 // Update a title
-export async function newCheckName(id) {
+export async function renameCheck(id, checkName) {
   const res = await fetch("/api/checks/" + id, {
     method: "PATCH",
     headers: {
+      "Content-Type": "application/json",
       "X-Browser-Id": getBrowserId(),
     },
-    body: { checkName: "new name" },
+    body: JSON.stringify({ checkName }),
   });
 
   if (!res.ok) {
