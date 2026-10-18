@@ -5,6 +5,21 @@ import { ObjectId } from "mongodb";
 const router = express.Router();
 const checks = db.collection("checks");
 
+function cleanDOI(doi) {
+  if (typeof doi !== "string") {
+    return;
+  }
+
+  doi = doi.trim();
+  doi = doi.toLowerCase();
+  doi = doi.replace(/^(https?:\/\/(dx\.)?doi\.org\/|doi:)/, "");
+  if (!doi.startsWith("10.")) {
+    return;
+  }
+
+  return doi;
+}
+
 router.get("/", async (req, res) => {
   // Data arrives FROM the browser.
   // The browser put its ID in a request HEADER named "X-Browser-Id"
@@ -166,6 +181,58 @@ router.patch("/:id", async (req, res) => {
       browserId,
     },
     { $set: { checkName } }
+  );
+
+  if (result.matchedCount === 0) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+
+  // Return success status
+  res.status(204).end();
+});
+
+router.post("/:id/dois", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+  const doiArray = req.body?.dois;
+
+  // Check if is actually an array
+  if (!Array.isArray(doiArray) || doiArray.length === 0) {
+    return res.status(400).json({ error: "Not a valid DOI array" });
+  }
+
+  const cleanDoiArray = doiArray.map(cleanDOI);
+  const fails = doiArray.filter((doi) => cleanDOI(doi) === undefined);
+
+  if (fails.length > 0) {
+    return res
+      .status(400)
+      .json({ error: `These don't look like DOIs: ${fails.join(", ")}` });
+  }
+
+  // find and update the check, return error if nothing was updated
+  const result = await checks.updateOne(
+    {
+      _id: checkObjectId,
+      browserId,
+    },
+    { $addToSet: { dois: { $each: cleanDoiArray } } }
   );
 
   if (result.matchedCount === 0) {
