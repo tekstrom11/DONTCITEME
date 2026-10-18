@@ -42,6 +42,13 @@ function renderChecks(checks) {
         message.textContent = `Couldn't delete citation check: ${err.message}`;
       }
     });
+
+    // build and append an edit link
+    const editLink = document.createElement("a");
+    editLink.textContent = "Edit";
+    editLink.href = "/check.html?id=" + check._id;
+
+    li.append(editLink);
     li.append(deleteButton);
     checkContainer.append(li);
   }

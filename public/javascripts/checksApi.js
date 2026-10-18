@@ -8,7 +8,21 @@ function getBrowserId() {
   return id;
 }
 
-// Returns a JSON of the exiting checks associated with the browser id
+// Returns a single check in JSON
+export async function getCheck(id) {
+  const res = await fetch("/api/checks/" + id, {
+    headers: {
+      "X-Browser-Id": getBrowserId(),
+    },
+  });
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error);
+  }
+  return data;
+}
+
+// Returns a JSON of the all checks associated with the browser id
 export async function getChecks() {
   const res = await fetch("/api/checks", {
     headers: { "X-Browser-Id": getBrowserId() },
