@@ -121,4 +121,59 @@ router.get("/:id", async (req, res) => {
   res.json(check);
 });
 
+router.patch("/:id", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+
+  // Name the user assigned
+  const rawCheckName = req.body?.checkName;
+
+  // Make sure they actually assigned a name
+  if (typeof rawCheckName !== "string" || rawCheckName.trim() === "") {
+    return res
+      .status(400)
+      .json({ error: "A name for this Citation Check is required" });
+  }
+
+  // Make sure that name isn't too long
+  const checkName = rawCheckName.trim();
+  if (checkName.length > 100) {
+    return res
+      .status(400)
+      .json({ error: "Citation Check names must <= 100 characters" });
+  }
+
+  // find and update the check, return error if nothing was updated
+  const result = await checks.updateOne(
+    {
+      _id: checkObjectId,
+      browserId,
+    },
+    { $set: { checkName } }
+  );
+
+  if (result.matchedCount === 0) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+
+  // Return success status
+  res.status(204).end();
+});
+
 export default router;

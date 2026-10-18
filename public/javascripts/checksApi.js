@@ -69,3 +69,19 @@ export async function deleteCheck(id) {
     throw new Error(data.error);
   }
 }
+
+// Update a title
+export async function newCheckName(id) {
+  const res = await fetch("/api/checks/" + id, {
+    method: "PATCH",
+    headers: {
+      "X-Browser-Id": getBrowserId(),
+    },
+    body: { checkName: "new name" },
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.error);
+  }
+}
