@@ -12,11 +12,20 @@
       <h1 id="check-name"></h1>
       <p id="created"></p>
       <form id="check-rename-form">
-        <label for="check-rename-form">Update Citation Check Name</label>
+        <label for="update-check-name">Update Citation Check Name</label>
         <input id="update-check-name" type="text" required maxlength="100" />
         <button type="submit">Update Name</button>
       </form>
       <ul id="dois"></ul>
+      <form id="new-dois-form">
+        <label for="new-dois">Add new DOIs here</label>
+        <textarea
+          id="new-dois"
+          required
+          placeholder="Paste DOIs, one per line"
+        ></textarea>
+        <button type="submit">Add DOIs</button>
+      </form>
       <p id="message" role="status"></p>
     </main>
     <script type="module" src="/javascripts/checkPage.js"></script>

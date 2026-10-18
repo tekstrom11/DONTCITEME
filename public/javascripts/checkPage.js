@@ -1,4 +1,4 @@
-import { getCheck, renameCheck } from "./checksApi.js";
+import { getCheck, renameCheck, addDois } from "./checksApi.js";
 
 // Get page elements from check.html
 const checkName = document.querySelector("#check-name");
@@ -7,6 +7,8 @@ const doisList = document.querySelector("#dois");
 const message = document.querySelector("#message");
 const renameForm = document.querySelector("#check-rename-form");
 const renameInput = document.querySelector("#update-check-name");
+const newDoisForm = document.querySelector("#new-dois-form");
+const newDois = document.querySelector("#new-dois");
 
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
@@ -17,7 +19,7 @@ function renderCheck(check) {
   checkName.textContent = check.checkName;
   const rawDate = new Date(check.createdAt);
   createdDate.textContent = `Created ${rawDate.toLocaleDateString()}`;
-  renameInput.textContent = check.checkName;
+  renameInput.value = check.checkName;
 
   doisList.replaceChildren();
   if (check.dois.length === 0) {
@@ -40,11 +42,31 @@ renameForm.addEventListener("submit", async (event) => {
   message.textContent = "";
 
   try {
-    // if it works, reload withe the new check added
+    // if it works, update the name
     await renameCheck(checkID, renameInput.value);
     await loadCheck();
   } catch (err) {
     message.textContent = `Couldn't update citation check name: ${err.message}`;
+  }
+});
+
+newDoisForm.addEventListener("submit", async (event) => {
+  // Stop a form submission from reloading the page, clear exiting message text
+  event.preventDefault();
+  message.textContent = "";
+
+  const doiInputArray = newDois.value
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line !== "");
+
+  try {
+    // if it works, add the new DOIs
+    await addDois(checkID, doiInputArray);
+    newDoisForm.reset();
+    await loadCheck();
+  } catch (err) {
+    message.textContent = `Couldn't add those DOIs: ${err.message}`;
   }
 });
 

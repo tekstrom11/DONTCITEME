@@ -86,3 +86,20 @@ export async function renameCheck(id, checkName) {
     throw new Error(data.error);
   }
 }
+
+// Add DOIS to the array
+export async function addDois(id, dois) {
+  const res = await fetch("/api/checks/" + id + "/dois", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Browser-Id": getBrowserId(),
+    },
+    body: JSON.stringify({ dois }),
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.error);
+  }
+}
