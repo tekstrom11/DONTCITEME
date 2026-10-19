@@ -19,9 +19,11 @@
       <nav class="site-nav">
         <a href="/">Home</a>
         <a href="/search.html" class="active">Browse Retractions</a>
+        <a href="/checks.html">My Citation Checks</a>
         <a href="/article.html" id="add-retraction-link">Add Retraction</a>
         <a href="/flags-admin.html" id="flags-link">Flagged Records</a>
       </nav>
+      
       <div class="header-actions">
         <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
       </div>
@@ -55,6 +57,9 @@
       <section class="results-section">
         <ul id="results-list" class="results-list"></ul>
         <p id="results-status" class="results-status"></p>
+      <section class="results-section">
+        <ul id="results-list" class="results-list"></ul>
+        <p id="results-status" class="results-status"></p>
 
         <div class="pagination">
           <button id="prev-page" class="btn btn-ghost" type="button">
@@ -67,7 +72,8 @@
         </div>
       </section>
     </main>
-  </body>
 
   <script type="module" src="/javascripts/search.js"></script>
+
 </html>
+
