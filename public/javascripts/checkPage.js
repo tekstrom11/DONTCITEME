@@ -6,6 +6,8 @@ import {
   getResults,
 } from "./checksApi.js";
 
+import { initAdminButton } from "./admin.js";
+
 // Get page elements from check.html
 const checkName = document.querySelector("#check-name");
 const createdDate = document.querySelector("#created");
@@ -162,4 +164,5 @@ async function loadCheck() {
   }
 }
 
+initAdminButton();
 loadCheck();
