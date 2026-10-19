@@ -22,33 +22,45 @@
         <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
       </div>
     </header>
-    <main>
-      <main class="page">
+    <main class="page">
       <div class="page-heading">
         <h2 id="check-name">My Citation Checks</h2>
-        <p class="page-subtitle">Check your references against 60,000+ retractions.</p>
+        <p class="page-subtitle">
+          Check your references against 60,000+ retractions.
+        </p>
       </div>
       <p id="created"></p>
       <div class="field">
-      <form id="check-rename-form" class="toolbar">
-        <label for="update-check-name">Update Citation Check Name</label>
-        <input id="update-check-name" type="text" required maxlength="100" />
-        <button type="submit" class="btn btn-primary">Update Name</button>
+        <form id="check-rename-form" class="toolbar">
+          <div class="field">
+            <label for="update-check-name">Update Citation Check Name</label>
+            <input
+              id="update-check-name"
+              type="text"
+              required
+              maxlength="100"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Update Name</button>
+        </form>
+
+        <ul id="dois"></ul>
+
+        <form id="new-dois-form" class="toolbar">
+          <div class="field">
+            <label for="new-dois">Add new DOIs here</label>
+            <textarea
+              id="new-dois"
+              required
+              placeholder="Paste DOIs, one per line"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Add DOIs</button>
+        </form>
       </div>
-      </form>
-      <ul id="dois"></ul>
-      <div class="field">
-      <form id="new-dois-form" class="toolbar">
-        <label for="new-dois">Add new DOIs here</label>
-        <textarea
-          id="new-dois"
-          required
-          placeholder="Paste DOIs, one per line"
-        ></textarea>
-        <button type="submit" class="btn btn-primary">Add DOIs</button>
-      </form>
-      </div>
-      <button id="run-check" type="button" class= "btn btn-dark">Run Citation Check</button>
+      <button id="run-check" type="button" class="btn btn-dark">
+        Run Citation Check
+      </button>
       <h2>Results</h2>
       <p id="message" role="status"></p>
       <ul id="check-results"></ul>
