@@ -66,7 +66,8 @@ async function runSearch() {
   const pagination = document.querySelector(".pagination");
   pagination.style.display = results.length > 0 ? "flex" : "none";
 
-  document.getElementById("prev-page").style.display = currentPage > 1 ? "inline-block" : "none";
+  document.getElementById("prev-page").style.display =
+    currentPage > 1 ? "inline-block" : "none";
   pageIndicator.textContent = `Page ${currentPage}`;
 }
 

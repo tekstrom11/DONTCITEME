@@ -1,0 +1,42 @@
+.flags-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flag-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--pink);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+
+.flag-record-link {
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.flag-record-link:hover {
+  text-decoration: underline;
+}
+
+.flag-reason {
+  margin: 8px 0;
+  color: var(--text);
+}
+
+.flag-meta {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.flag-actions {
+  display: flex;
+  gap: 8px;
+}

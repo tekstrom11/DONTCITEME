@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Don't Cite Me! - Flagged Records</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/flags-admin.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/article.html" id="add-retraction-link">Add Retraction</a>
+        <a href="/flags-admin.html" class="active">Flagged Records</a>
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page-heading">
+        <h2>Flagged Records</h2>
+        <p class="page-subtitle">
+          Review reports submitted by users and resolve or dismiss them.
+        </p>
+      </div>
+
+      <ul id="flags-list" class="flags-list"></ul>
+      <p id="flags-status" class="results-status"></p>
+    </main>
+  </body>
+
+  <script type="module" src="/javascripts/flags-admin.js"></script>
+</html>
