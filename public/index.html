@@ -3,13 +3,71 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Don't Cite Me!</title>
+    <title>Don't Cite Me! - Home</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/home.css" />
   </head>
 
   <body>
-    <h1>DON'T CITE ME!</h1>
-    <main id="app"></main>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/" class="active">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/checks.html">My Citation Checks</a>
+        <a href="/article.html" id="add-retraction-link">Add Retraction</a>
+        <a href="/flags-admin.html" id="flags-link">Flagged Records</a>
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
+    <main class="page">
+      <div class="page-heading">
+        <h2>Make sure you're not citing retracted research</h2>
+        <p class="page-subtitle">
+          Check your bibliography against 60,000+ retracted papers.
+        </p>
+      </div>
+      <div class="home-cards">
+        <section class="home-card">
+          <h3>Citation Checker</h3>
+          <p>Paste your references and see which ones have been retracted.</p>
+          <ol>
+            <li>
+              Go to <strong> My Citation Checks </strong> and create a check
+              (one per chapter or paper).
+            </li>
+            <li>
+              Open it and paste your DOIs, one per line. Links and doi: prefixes
+              are fine.
+            </li>
+            <li>
+              Click <strong> Run Citation Check </strong> to see any retracted
+              papers.
+            </li>
+          </ol>
+          <a href="/checks.html" class="btn btn-primary">Check my citations</a>
+        </section>
+        <section class="home-card">
+          <h3>Browse Retractions</h3>
+          <p>Look for retractions within our database</p>
+          <ol>
+            <li>Browse or search retractions by subject.</li>
+            <li>
+              Think a record is wrong? Click <strong>Report an Error </strong>to
+              flag it for review.
+            </li>
+            <li>(Admins) Add, edit, or remove records, and review flags.</li>
+            <li>
+              Think a record is wrong? Use <strong> Report an Error </strong> on
+              the <strong> Browse</strong> page.
+            </li>
+          </ol>
+          <a href="/search.html" class="btn btn-primary">Submit a Retraction</a>
+        </section>
+      </div>
+    </main>
     <script type="module" src="/javascripts/main.js"></script>
   </body>
 </html>

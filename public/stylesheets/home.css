@@ -1,0 +1,31 @@
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.home-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  border-left: 6px solid var(--accent);
+}
+
+.home-card .btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.home-card:nth-child(2) {
+  border-left-color: var(--blue);
+}
+
+@media (max-width: 640px) {
+  .home-cards {
+    grid-template-columns: 1fr;
+  }
+}
