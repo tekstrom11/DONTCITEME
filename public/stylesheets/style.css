@@ -19,6 +19,11 @@
   box-sizing: border-box;
 }
 
+#add-retraction-link,
+#flags-link {
+  display: none;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", system-ui, sans-serif;
