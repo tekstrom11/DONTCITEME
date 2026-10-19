@@ -28,6 +28,7 @@ function renderChecks(checks) {
     // build and append a delete button
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
+    deleteButton.className = "btn btn-danger";
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", async () => {
       const deleteConfirm = confirm("Do you want to delete this check?");
@@ -46,6 +47,7 @@ function renderChecks(checks) {
     // build and append an edit link
     const editLink = document.createElement("a");
     editLink.textContent = "Edit";
+    editLink.className = "btn btn-ghost";
     editLink.href = "/check.html?id=" + check._id;
 
     li.append(editLink);

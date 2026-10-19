@@ -3,17 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Citation Checks</title>
+    <title>Don't Cite Me! - My Citation Checks</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/checks.css" />
   </head>
 
   <body>
-    <main>
-      <h1>My Citation Checks</h1>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/article.html" id="add-retraction-link">Add Retraction</a>
+        <a href="/checks.html" class="active">My Citation Checks</a>
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
+    <main class="page">
+      <div class="page-heading">
+        <h2>My Citation Checks</h2>
+        <p class="page-subtitle">
+          Check your references against 60,000+ retractions.
+        </p>
+      </div>
       <form id="new-check-form">
         <label for="check-name">Citation Check Name</label>
         <input id="check-name" type="text" required maxlength="100" />
-        <button type="submit">Create Citation Check</button>
+        <button type="submit" class="btn btn-primary">
+          Create Citation Check
+        </button>
       </form>
       <p id="message" role="status"></p>
       <ul id="checks"></ul>

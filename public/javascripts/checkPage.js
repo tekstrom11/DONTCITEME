@@ -43,6 +43,7 @@ function renderCheck(check) {
     // build and append a delete button
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
+    deleteButton.className = "btn btn-danger";
     deleteButton.textContent = "Remove";
     deleteButton.addEventListener("click", async () => {
       const deleteConfirm = confirm("Do you want to remove this DOI?");

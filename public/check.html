@@ -3,18 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Citation Checks</title>
+    <title>Don't Cite Me! - Individual Citation Check</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/check.css" />
   </head>
 
   <body>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/article.html" id="add-retraction-link">Add Retraction</a>
+        <a href="/checks.html" class="active">My Citation Checks</a>
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
     <main>
-      <h1 id="check-name"></h1>
+      <main class="page">
+      <div class="page-heading">
+        <h2 id="check-name">My Citation Checks</h2>
+        <p class="page-subtitle">Check your references against 60,000+ retractions.</p>
+      </div>
       <p id="created"></p>
       <form id="check-rename-form">
         <label for="update-check-name">Update Citation Check Name</label>
         <input id="update-check-name" type="text" required maxlength="100" />
-        <button type="submit">Update Name</button>
+        <button type="submit" class="btn btn-primary">Update Name</button>
+
       </form>
       <ul id="dois"></ul>
       <form id="new-dois-form">
@@ -24,9 +42,9 @@
           required
           placeholder="Paste DOIs, one per line"
         ></textarea>
-        <button type="submit">Add DOIs</button>
+        <button type="submit" class="btn btn-primary">Add DOIs</button>
       </form>
-      <button id="run-check" type="button">Run Citation Check</button>
+      <button id="run-check" type="button" class= "btn btn-dark">Run Citation Check</button>
       <h2>Results</h2>
       <p id="message" role="status"></p>
       <ul id="check-results"></ul>
