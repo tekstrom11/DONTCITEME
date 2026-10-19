@@ -2,10 +2,10 @@
 
 Check your bibliography against a database of 60,000+ retracted academic papers, browse retractions by subject, and report records you believe are wrong.
 
-**Live site:** [ADD DEPLOYED URL HERE](https://example.com)
+**Live site:** [https://dontciteme.onrender.com/](https://dontciteme.onrender.com/)
 _(Hosted on a free tier, so the first load after a period of inactivity can take up to a minute while the server wakes up.)_
 
-![Don't Cite Me! homepage](screenshots/home.png)
+![Don't Cite Me! homepage](screenshots_home.png)
 
 ## Authors
 
@@ -171,5 +171,5 @@ Check routes require an `X-Browser-Id` header. Admin routes require an `X-Admin-
 ## AI Use Disclosure
 
 - **This README** was drafted by Claude (Anthropic) from the project's source code and design notes, then reviewed and edited by the authors.
-- **Tor Ekstrom** used Claude as a tutor while building the Citation Checker: for explanations of Git, Express, MongoDB, and browser JavaScript concepts, for a separate analogous example to learn from, and for help reading error messages and reviewing code. Tor wrote the Citation Checker code.
+- **Tor Ekstrom** used Claude as a tutoring/debugging while building the Citation Checker: for explanations of Express, MongoDB, and browser JavaScript concepts, generating examples, and for help reading error messages and reviewing code. Tor wrote the Citation Checker code.
 - **Thejaswini Srinivasan Manjula:** [ADD DISCLOSURE OR "No AI tools were used."]
