@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Don't Cite Me! - Report an Error</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/flag.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="/" class="site-title">Don't Cite Me!</a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="/search.html">Browse Retractions</a>
+        <a href="/article.html" id="add-retraction-link">Add Retraction</a>
+      </nav>
+      <div class="header-actions">
+        <button id="admin-btn" class="btn btn-dark" type="button">Admin</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page-heading">
+        <h2>Report an Error</h2>
+        <p class="page-subtitle">
+          Think this record is wrong? Let us know and an editor will review it.
+        </p>
+      </div>
+
+      <div class="card-form">
+        <p id="flag-record-title" class="flag-record-title"></p>
+
+        <form id="flag-form">
+          <div class="field">
+            <label for="flag-reason">What's wrong with this record?</label>
+            <textarea
+              id="flag-reason"
+              name="reason"
+              rows="4"
+              required
+              placeholder="e.g. This paper was corrected, not retracted"
+            ></textarea>
+          </div>
+
+          <div class="field">
+            <label for="flag-submitter">Your name or email (optional)</label>
+            <input
+              type="text"
+              id="flag-submitter"
+              name="submittedBy"
+              placeholder="Optional"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Report</button>
+        </form>
+
+        <p id="flag-status" class="article-status"></p>
+      </div>
+    </main>
+  </body>
+
+  <script type="module" src="/javascripts/flag.js"></script>
+</html>

@@ -87,7 +87,15 @@
   padding: 18px 22px;
 }
 
-.result-card:nth-child(4n+1) { border-left-color: var(--blue); }
-.result-card:nth-child(4n+2) { border-left-color: var(--pink); }
-.result-card:nth-child(4n+3) { border-left-color: var(--green); }
-.result-card:nth-child(4n+4) { border-left-color: var(--yellow); }
+.result-card:nth-child(4n + 1) {
+  border-left-color: var(--blue);
+}
+.result-card:nth-child(4n + 2) {
+  border-left-color: var(--pink);
+}
+.result-card:nth-child(4n + 3) {
+  border-left-color: var(--green);
+}
+.result-card:nth-child(4n + 4) {
+  border-left-color: var(--yellow);
+}

@@ -60,6 +60,8 @@ form.addEventListener("submit", async (event) => {
     return;
   }
 
-  status.textContent = editId ? "Updated successfully." : "Created successfully.";
+  status.textContent = editId
+    ? "Updated successfully."
+    : "Created successfully.";
   form.reset();
 });
