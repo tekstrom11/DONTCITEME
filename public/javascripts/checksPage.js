@@ -1,4 +1,5 @@
 import { getChecks, createCheck, deleteCheck } from "./checksApi.js";
+import { initAdminButton } from "./admin.js";
 
 // Get page elements from checks.html
 const form = document.querySelector("#new-check-form");
@@ -82,4 +83,5 @@ form.addEventListener("submit", async (event) => {
 });
 
 // Load once when page appears
+initAdminButton();
 loadChecks();
