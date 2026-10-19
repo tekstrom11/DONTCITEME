@@ -120,3 +120,17 @@ export async function removeDoi(id, doi) {
     throw new Error(data.error);
   }
 }
+
+// Returns a JSON of matching retractions
+export async function getResults(id) {
+  const res = await fetch(`/api/checks/${id}/results`, {
+    headers: { "X-Browser-Id": getBrowserId() },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error);
+  }
+
+  return data;
+}

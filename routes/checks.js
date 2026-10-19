@@ -4,6 +4,7 @@ import { ObjectId } from "mongodb";
 
 const router = express.Router();
 const checks = db.collection("checks");
+const retractions = db.collection("retractions");
 
 function cleanDOI(doi) {
   if (typeof doi !== "string") {
@@ -284,6 +285,57 @@ router.delete("/:id/dois", async (req, res) => {
 
   // Return success status
   res.status(204).end();
+});
+
+router.get("/:id/results", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+
+  // find and return JSON of a specific check, return error if nothing was found
+  const check = await checks.findOne({ _id: checkObjectId, browserId });
+  if (!check) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+
+  const dois = check.dois;
+
+  if (dois.length === 0) {
+    return res.json([]);
+  }
+
+  const results = await retractions
+    .find(
+      {
+        original_paper_doi: { $in: dois },
+      },
+      {
+        projection: {
+          title: 1,
+          journal: 1,
+          original_paper_doi: 1,
+          retraction_date: 1,
+          retraction_reasons: 1,
+        },
+      }
+    )
+    .toArray();
+  res.json(results);
 });
 
 export default router;
