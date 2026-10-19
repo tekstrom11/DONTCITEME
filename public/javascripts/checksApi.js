@@ -103,3 +103,20 @@ export async function addDois(id, dois) {
     throw new Error(data.error);
   }
 }
+
+// Remove a DOI
+export async function removeDoi(id, doi) {
+  const res = await fetch("/api/checks/" + id + "/dois", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Browser-Id": getBrowserId(),
+    },
+    body: JSON.stringify({ doi }),
+  });
+
+  if (!res.ok) {
+    const data = await res.json();
+    throw new Error(data.error);
+  }
+}

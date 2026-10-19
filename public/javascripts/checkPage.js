@@ -1,4 +1,4 @@
-import { getCheck, renameCheck, addDois } from "./checksApi.js";
+import { getCheck, renameCheck, addDois, removeDoi } from "./checksApi.js";
 
 // Get page elements from check.html
 const checkName = document.querySelector("#check-name");
@@ -32,6 +32,25 @@ function renderCheck(check) {
   for (const doi of check.dois) {
     const li = document.createElement("li");
     li.textContent = doi;
+    // build and append a delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", async () => {
+      const deleteConfirm = confirm("Do you want to remove this DOI?");
+
+      if (!deleteConfirm) {
+        return;
+      }
+      try {
+        await removeDoi(check._id, doi);
+        await loadCheck();
+      } catch (err) {
+        message.textContent = `Couldn't remove DOI: ${err.message}`;
+      }
+    });
+
+    li.append(deleteButton);
     doisList.append(li);
   }
 }

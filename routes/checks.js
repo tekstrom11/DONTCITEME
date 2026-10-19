@@ -243,4 +243,47 @@ router.post("/:id/dois", async (req, res) => {
   res.status(204).end();
 });
 
+router.delete("/:id/dois", async (req, res) => {
+  // Data arrives FROM the browser.
+  // The browser put its ID in a request HEADER named "X-Browser-Id"
+  const browserId = req.get("X-Browser-Id");
+
+  // Respond with 400 if no browser ID
+  if (!browserId) {
+    return res.status(400).json({ error: "Missing browser ID" });
+  }
+
+  // get the id
+  const rawReqId = req.params.id;
+
+  // respond with 404 if the id is invalid
+  if (!ObjectId.isValid(rawReqId)) {
+    return res.status(404).json({ error: "Invalid Object ID" });
+  }
+
+  const checkObjectId = new ObjectId(rawReqId);
+  const doi = cleanDOI(req.body?.doi);
+
+  // catch invalid DOI
+  if (!doi) {
+    return res.status(400).json({ error: "Invalid DOI" });
+  }
+
+  // find and update the check, return error if nothing was updated
+  const result = await checks.updateOne(
+    {
+      _id: checkObjectId,
+      browserId,
+    },
+    { $pull: { dois: doi } }
+  );
+
+  if (result.matchedCount === 0) {
+    return res.status(404).json({ error: "Citation Check not found" });
+  }
+
+  // Return success status
+  res.status(204).end();
+});
+
 export default router;
