@@ -46,7 +46,7 @@ function renderChecks(checks) {
 
     // build and append an edit link
     const editLink = document.createElement("a");
-    editLink.textContent = "Edit";
+    editLink.textContent = "Open";
     editLink.className = "btn btn-ghost";
     editLink.href = "/check.html?id=" + check._id;
 

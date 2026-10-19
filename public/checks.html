@@ -28,13 +28,15 @@
           Check your references against 60,000+ retractions.
         </p>
       </div>
-      <form id="new-check-form">
-        <label for="check-name">Citation Check Name</label>
-        <input id="check-name" type="text" required maxlength="100" />
-        <button type="submit" class="btn btn-primary">
-          Create Citation Check
-        </button>
-      </form>
+      <div class="field">
+        <form id="new-check-form" class="toolbar">
+          <label for="check-name">Citation Check Name</label>
+          <input id="check-name" type="text" required maxlength="100" />
+          <button type="submit" class="btn btn-primary">
+            Create Citation Check
+          </button>
+        </form>
+      </div>
       <p id="message" role="status"></p>
       <ul id="checks"></ul>
     </main>
