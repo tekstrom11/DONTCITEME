@@ -1,0 +1,32 @@
+.card-form {
+  max-width: 560px;
+}
+
+.flag-record-title {
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+#flag-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#flag-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#flag-form textarea,
+#flag-form input {
+  width: 100%;
+}
+
+#flag-form input {
+  padding: 12px 14px;
+  font-size: 1rem;
+}

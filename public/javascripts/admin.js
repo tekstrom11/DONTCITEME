@@ -30,9 +30,14 @@ export function logoutAdmin() {
 export function initAdminButton() {
   const btn = document.getElementById("admin-btn");
   const addLink = document.getElementById("add-retraction-link");
+  const flagsLink = document.getElementById("flags-link");
 
   if (addLink) {
     addLink.style.display = getAdminPassword() ? "inline" : "none";
+  }
+
+  if (flagsLink) {
+    flagsLink.style.display = getAdminPassword() ? "inline" : "none";
   }
 
   if (!btn) return;

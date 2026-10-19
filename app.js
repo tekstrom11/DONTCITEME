@@ -4,6 +4,7 @@ import path from "path";
 import logger from "morgan";
 import checksRouter from "./routes/checks.js";
 import retractionsRouter from "./routes/retractions.js";
+import flagsRouter from "./routes/flags.js";
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(import.meta.dirname, "public")));
 app.use("/api/checks", checksRouter);
 app.use("/api/retractions", retractionsRouter);
+app.use("/api/flags", flagsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
