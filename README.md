@@ -5,7 +5,7 @@ Check your bibliography against a database of 60,000+ retracted academic papers,
 **Live site:** [https://dontciteme.onrender.com/](https://dontciteme.onrender.com/)
 _(Hosted on a free tier, so the first load after a period of inactivity can take up to a minute while the server wakes up.)_
 
-![Don't Cite Me! homepage](screenshots_home.png)
+![Don't Cite Me! homepage](images/screenshots_home.png)
 
 ## Authors
 
