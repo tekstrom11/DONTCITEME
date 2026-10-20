@@ -51,6 +51,14 @@ Retraction data comes from the _Global Academic Retractions (2000–2025)_ datas
 - **Admin only** (password protected): add, edit, and delete retraction records, and review flagged records.
 - New retraction records are assigned a unique record_id automatically, since the imported dataset enforces a unique index on that field.
 
+### Screenshots 
+
+![Browse Retractions](images/browse_retractions_page.png)
+![Citation Checker](images/citation_checker_page.png)
+![Add retraction (as an admin)](images/add_retraction_page.png)
+![Flagged Records](images/flagged_records_page.png)
+
+
 ## How to Use
 
 1. Open **My Citation Checks** and create a check, such as "Chapter 2".
