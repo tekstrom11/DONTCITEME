@@ -47,7 +47,9 @@ Retraction data comes from the _Global Academic Retractions (2000–2025)_ datas
 
 - Browse and search retraction records by subject category, with pagination.
 - Report an error on a record you believe is incorrect.
+- Browsing retractions and reporting a record require no login.
 - **Admin only** (password protected): add, edit, and delete retraction records, and review flagged records.
+- New retraction records are assigned a unique record_id automatically, since the imported dataset enforces a unique index on that field.
 
 ## How to Use
 
@@ -172,4 +174,4 @@ Check routes require an `X-Browser-Id` header. Admin routes require an `X-Admin-
 
 - **This README** was drafted by Claude (Anthropic) from the project's source code and design notes, then reviewed and edited by the authors.
 - **Tor Ekstrom** used Claude as a tutoring/debugging while building the Citation Checker: for explanations of Express, MongoDB, and browser JavaScript concepts, generating examples, and for help reading error messages and reviewing code. Tor wrote the Citation Checker code.
-- **Thejaswini Srinivasan Manjula:** [ADD DISCLOSURE OR "No AI tools were used."]
+- **Thejaswini Srinivasan Manjula:** Used Claude mainly for debugging (interpreting error messages and tracing bugs like MongoDB ObjectId conversion and a unique-index collision) and for understanding concepts (REST verbs, Express middleware, async/await) while building the Retraction Manager. Also used for documentation support.
