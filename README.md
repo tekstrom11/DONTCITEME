@@ -5,7 +5,7 @@ Check your bibliography against a database of 60,000+ retracted academic papers,
 **Live site:** [https://dontciteme.onrender.com/](https://dontciteme.onrender.com/)
 _(Hosted on a free tier, so the first load after a period of inactivity can take up to a minute while the server wakes up.)_
 
-![Don't Cite Me! homepage](screenshots_home.png)
+![Don't Cite Me! homepage](images/screenshots_home.png)
 
 ## Authors
 
@@ -50,6 +50,14 @@ Retraction data comes from the _Global Academic Retractions (2000–2025)_ datas
 - Browsing retractions and reporting a record require no login.
 - **Admin only** (password protected): add, edit, and delete retraction records, and review flagged records.
 - New retraction records are assigned a unique record_id automatically, since the imported dataset enforces a unique index on that field.
+
+### Screenshots 
+
+![Browse Retractions](images/browse_retractions_page.png)
+![Citation Checker](images/citation_checker_page.png)
+![Add retraction (as an admin)](images/add_retraction_page.png)
+![Flagged Records](images/flagged_records_page.png)
+
 
 ## How to Use
 
