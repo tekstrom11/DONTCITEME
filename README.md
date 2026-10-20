@@ -17,6 +17,15 @@ _(Hosted on a free tier, so the first load after a period of inactivity can take
 CS 5610 Web Development, Northeastern University, taught by Prof. John Alexis Guerra Gomez.
 [CLASS LINK](https://johnguerra.co/classes/webDevelopment_online_fall_2026/)
 
+## Presentation slides
+https://docs.google.com/presentation/d/1P2FlRjezUF2ksZ4Fcon-gyqZtn-i8g82jAfnbUTf0OQ/edit?slide=id.p#slide=id.p
+
+## Video Demonstration
+https://www.youtube.com/watch?v=91JXLLTfDfA
+
+## Design Document
+https://docs.google.com/document/d/18uWAcmVM-s80IqQRVYjOE3MRTk5q2WCl5FkIYCUnSfI/edit?tab=t.0
+
 ## Project Objective
 
 Research is hard enough without having to confirm that your citations aren't based on retracted papers. Looking up each reference by hand is tedious, and often unrealistic on a deadline. **Don't Cite Me!** gives researchers a quick way to:
