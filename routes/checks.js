@@ -219,7 +219,7 @@ router.post("/:id/dois", async (req, res) => {
   }
 
   const cleanDoiArray = doiArray.map(cleanDOI);
-  const fails = doiArray.filter((doi) => cleanDOI(doi) === undefined);
+  const fails = doiArray.filter((doi, i) => cleanDoiArray[i] === undefined);
 
   if (fails.length > 0) {
     return res
