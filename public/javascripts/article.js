@@ -46,22 +46,32 @@ form.addEventListener("submit", async (event) => {
   const url = editId ? `/api/retractions/${editId}` : "/api/retractions";
   const method = editId ? "PUT" : "POST";
 
-  const res = await fetch(url, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-      "x-admin-password": getAdminPassword(),
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const res = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        "x-admin-password": getAdminPassword(),
+      },
+      body: JSON.stringify(data),
+    });
+  
+    if (res.status === 401) {
+      status.textContent = "Incorrect admin password.";
+      return;
+    }
 
-  if (res.status === 401) {
-    status.textContent = "Incorrect admin password.";
-    return;
-  }
-
-  status.textContent = editId
-    ? "Updated successfully."
-    : "Created successfully.";
-  form.reset();
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      status.textContent =
+        body.error || "Something went wrong. Please try again.";
+      return;
+    }
+  
+    status.textContent = editId
+      ? "Updated successfully."
+      : "Created successfully.";
+    form.reset();
+  } catch {
+    status.textContent = "Network error. Please try again.";
 });
